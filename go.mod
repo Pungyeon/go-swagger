@@ -1,6 +1,8 @@
-module github.com/go-swagger/go-swagger
+module github.com/Pungyeon/go-swagger
 
 go 1.14
+
+replace github.com/go-swagger/go-swagger => ./
 
 require (
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d // indirect
@@ -17,6 +19,7 @@ require (
 	github.com/go-openapi/strfmt v0.20.1
 	github.com/go-openapi/swag v0.19.15
 	github.com/go-openapi/validate v0.20.2
+	github.com/go-swagger/go-swagger v0.0.0-00010101000000-000000000000 // indirect
 	github.com/go-swagger/scan-repo-boundary v0.0.0-20180623220736-973b3573c013
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/gorilla/handlers v1.5.1

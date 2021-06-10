@@ -15,6 +15,7 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -31,6 +32,7 @@ var opts struct {
 }
 
 func main() {
+	fmt.Println("Pungyeon Swagger")
 	// TODO: reactivate 'defer catch all' once product is stable
 	// Recovering from internal panics
 	// Stack may be printed in Debug mode

@@ -420,10 +420,12 @@ func (s *schemaBuilder) buildFromInterface(decl *entityDecl, it *types.Interface
 		hasAllOf bool
 	)
 
-	flist := make([]*ast.Field, it.NumEmbeddeds()+it.NumExplicitMethods())
+	// flist := make([]*ast.Field, it.NumEmbeddeds()+it.NumExplicitMethods())
+	var flist []*ast.Field
 	fmt.Println("AST Field Type:", decl.Spec.Type)
-	for i := range decl.Spec.Type.(*ast.InterfaceType).Methods.List {
-		flist[i] = decl.Spec.Type.(*ast.InterfaceType).Methods.List[i]
+	ifaceType := decl.Spec.Type.(*ast.InterfaceType)
+	for i := range ifaceType.Methods.List {
+		flist = append(flist, decl.Spec.Type.(*ast.InterfaceType).Methods.List[i])
 	}
 
 	// First collect the embedded interfaces
@@ -833,6 +835,7 @@ func (s *schemaBuilder) buildAllOf(tpe types.Type, schema *spec.Schema) error {
 					}
 					return nil
 				}
+				fmt.Println("Type is Interface:", decl, utpe, schema)
 				return s.buildFromInterface(decl, utpe, schema, make(map[string]string))
 			}
 			return errors.Errorf("can't find source file for interface: %s", ftpe.String())
