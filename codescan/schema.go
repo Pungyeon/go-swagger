@@ -421,6 +421,7 @@ func (s *schemaBuilder) buildFromInterface(decl *entityDecl, it *types.Interface
 	)
 
 	flist := make([]*ast.Field, it.NumEmbeddeds()+it.NumExplicitMethods())
+	fmt.Println("AST Field Type:", decl.Spec.Type)
 	for i := range decl.Spec.Type.(*ast.InterfaceType).Methods.List {
 		flist[i] = decl.Spec.Type.(*ast.InterfaceType).Methods.List[i]
 	}
